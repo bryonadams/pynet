@@ -1,0 +1,66 @@
+.--------------------------.
+| November 14, 2016        |
+|  For Loops and tricks    |
+'--------------------------'
+
+# Remember, range() is a function in python3. Otherwise, it is it's own data type.
+#  When calling range on it's own with an argument, it just creates a new range of
+#  whatever dimension is passed.
+>>> a  = range(10)
+>>> type(a)
+<class 'range'>
+>>> a
+range(0, 10)
+
+
+# When calling range() as an argument of something else, it will spit out the range
+#  and use that as the argument.
+>>> a = list(range(10))
+>>> type(a)
+<class 'list'>
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+>>> a
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> list(range(len(a)))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+# for loops are useful for iterating over a list (remember, strings can be indexed)
+>>> b = 'whatever'
+>>> for i in b:
+...   print(i)
+... 
+w
+h
+a
+t
+e
+v
+e
+r
+
+# instead of creating an indexing variable (ex: n = 0) and incrementing each time,
+#  range() can be called to do this automatically. 
+>>> for i in range(len(a)):
+...   a[i] = a[i] ** 2
+... 
+>>> a
+[0, 1, 16, 81, 256, 625, 1296, 2401, 4096, 6561]
+
+
+# A little cleaner way to do the previous example is using enumerate(). 
+#  The enumerate() function provides a way to iterate through a list 
+#  returning both the index and the value at that index.
+>>> for i,element in enumerate(a):
+...   a[i] = element ** 2
+... 
+>>> a
+[0, 1, 256, 6561, 65536, 390625, 1679616, 5764801, 16777216, 43046721]
+
+
+# An example of enumerate with alphanumeric list for readability.
+>>> seasons = ['Spring', 'Summer', 'Fall', 'Winter']
+>>> list(enumerate(seasons))
+[(0, 'Spring'), (1, 'Summer'), (2, 'Fall'), (3, 'Winter')]

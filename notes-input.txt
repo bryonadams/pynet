@@ -1,0 +1,11 @@
+.-------------------------------.
+| November 3rd, 2016            |
+|  Notes about input function   |
+'-------------------------------'
+
+# In python3, raw_input is replaced by input
+ip_addr = input("Please enter an IP address: ")
+
+# Use substition here with the % operator to pull the first
+#  variable in the group noted after % at the end.
+print("The IP address now is: %s" % (ip_addr))

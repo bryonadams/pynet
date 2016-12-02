@@ -1,0 +1,65 @@
+.-----------------------.
+| November 21, 2016     |
+|  Dictionaries         |
+|                       |
+'-----------------------'
+
+# Dictionaries in Python are a set of key-value pairs. Mapping of keys and 
+#  their corresponding values. AKA "associative array." This has an advantage
+#  over a list in that you can remember a name easier than an arbitrary index 
+#  in a list (Think DNS). There are also performance benefits.
+# 
+# Think of the below psuedocode. These are easier to remember than list indexes
+# and assigning variables for everything like this is sloppy  
+name          = sf-rtr-1
+ip_addr       = 1.1.1.1
+serial_number = FTX00001
+os_version    = 12.4.22T
+... (some 12 more attributes)
+
+# Creating a dictionary
+>>> a = {}
+
+# Initializing a dictionary (note: this can all be done on one line)
+#  Note that the order it comes back in will probably not be the way you entered 
+#  it. Do not depend on the order data is entered. Keys must be unique, I could 
+#  not use 'name' twice.
+>>> a = {
+...   'name': 'sf-rtr-1',
+...   'ip_addr': '1.1.1.1',
+...   'seria_number': 'FTX000001',
+...   'os_version': '12.4.15T',
+... }
+>>> a
+{'ip_addr': '1.1.1.1', 'os_version': '12.4.15T', 'name': 'sf-rtr-1', 'seria_number': 'FTX000001'}
+
+# What can we do with a dictionary?
+# They can be indexed and assigned like a list:
+>>> a['name']               
+'sf-rtr-1'
+>>> a['name'] = 'la-rtr-1'
+>>> a['name']
+'la-rtr-1'
+
+# Add, delete, or check for a key
+>>> a['model'] = '1941'
+>>> a
+{'ip_addr': '1.1.1.1', 'serial_number': 'FTX000001', 'name': 'la-rtr-1', 'model': '1941', 'os_version': '12.4.15T'}
+>>> del a['model']
+>>> a['model']
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+KeyError: 'model'
+>>> a.get('model')     # returns nothing
+>>> a.get('name')
+'la-rtr-1'
+>>> 'name' in a
+True
+
+# Return dictionary keys or values as a list. This can be iterated over 
+#  These are deterministic and will always be the same order 
+>>> a.keys()
+dict_keys(['ip_addr', 'serial_number', 'name', 'model', 'os_version'])
+>>> print([i for i in a.keys()])
+['ip_addr', 'serial_number', 'name', 'model', 'os_version']
+

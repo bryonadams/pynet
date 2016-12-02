@@ -1,0 +1,15 @@
+.---------------------------.
+| November 14, 2016         |
+|  Flow control:            |
+|   continue, break, etc    |
+'---------------------------'
+# Flow control functions:
+
+if
+else
+elif
+while
+for
+continue    # Stop working through loop, start the next iteration
+break       # Stop working thorugh loop, exit loop
+pass        # Skip through loop, starts next interation

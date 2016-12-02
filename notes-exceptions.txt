@@ -1,0 +1,60 @@
+.-----------------------.
+|  November 22, 2016    |
+|   Exception Handling  |
+'-----------------------'
+
+
+$ ./temp.py 
+hello
+Traceback (most recent call last):
+  File "./temp.py", line 7, in <module>
+    print(a['name'])
+KeyError: 'name'
+
+# Return the exit code of the last run program. Success returns a 0
+$ echo $?
+1
+
+# Handling the exception: try & except
+try:
+  some code
+  something else
+  more code
+except [some error]:        #ex: KeyError
+  print('something happened')
+
+# The first exception is reached it will terminate the program and 
+#  throw an error Code. stops execution once the first part of the try 
+#  'once' block fails. The other exceptions won't be reached. If a['name'] is 
+#  valid, the IndexError will run instead.
+# 
+try:
+  print('string2')
+  print(a['name'])
+  print(b[0])
+  print('string3')
+except KeyError:
+  print('There was a key exception')
+except IndexError:
+  print('There was an index exception')
+
+# Excepts can be stored as a variable and called to get the error. These can 
+#  be sent to a file for viewing later.
+except IndexError as e:
+  print(str(e))
+
+# It is perfectly fine to write code epecting errors
+try:
+  do something
+except:
+  continue doing things
+
+# Bad practices:
+#  The first example catches everything, including keyboard exceptions like break.
+#  It also hides programming errors which can make debugging difficult. The second
+#  catches almost all excepts. 
+except:
+  print('whatever')
+
+except Exception:
+  pass

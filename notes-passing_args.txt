@@ -1,0 +1,36 @@
+.-----------------------------------.
+| November 16th, 2016               |
+|  Passing Arguments into a script  |
+'-----------------------------------'
+
+# Making a script executable without calling python first, place
+# the below 'shebang' at the top of the file: (include the #)
+#!/usr/bin/env python
+
+# Use 'input' to call a library. 
+#  A library for accepting arguments such as input is 'sys'
+import sys
+
+# Simple statement to print arguments passed to the script. This returns a list.
+print sys.argv
+$ ./script.py whatever another things
+['./temp.py', 'whatever', 'another', 'things']
+
+# Accepting input with some decisionmaking:
+ #!/usr/bin/env python
+
+ import sys
+
+ if len(sys.argv) == 2:
+   ip_addr = sys.argv.pop()
+   print("The IP address is {}".format(ip_addr))
+ else:
+   print("You made an error.")
+
+ $ ./temp.py 10.1.1.1
+ The IP address is 10.1.1.1
+ $ ./temp.py 10.1.1.1 120.1.1.1
+ You made an error.
+ $ ./temp.py 10.1.1.1 120.1.1.1 1.1.1.1
+ You made an error.
+

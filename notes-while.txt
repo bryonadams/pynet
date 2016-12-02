@@ -1,0 +1,29 @@
+.-----------------------.
+| November 21, 2016     |
+|  While Loops          |
+|                       |
+'-----------------------'
+
+# If the expression is true, enter into the loop. 
+#  After the last statement, if expression is still true, iterate again.
+>>> while (expression):
+...   statement
+...   statement
+
+# For example, this loop will print $i and the string 'Hello'
+>>> i = 1
+>>> while i <= 10:
+...   print(i)
+...   print('Hello')
+...   i += 1
+
+# Bear in mind, a loop can run forever if an error is made. In this
+#  example, >= is used in case $i is somehow greater than 11 when it begins.:
+>>> i = 0
+>>> while True:
+...   if i >= 11:
+...     break
+...   print(i)
+...   print('Hello')
+...   i += 1
+
