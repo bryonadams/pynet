@@ -1,0 +1,71 @@
+.---------------------------------------------------------.
+|  Dec 5th, 2016                                          |
+|   Namespaces                                            |
+|   This is the context in which a variable is looked at  |
+|                                                         |
+'---------------------------------------------------------'
+
+# Consider the below code and function:
+#  x, y, and z are assigned values at the beginning. Inside the function x and y are assigned 
+#  different values. For the duration of that function, x and y are the new values until 
+#  leaving the function. Once back outside, the old values are back. The new values only 
+#  exist within that function as they are not returned.
+x = 10
+y = 20
+z = 30
+
+def simple_func():
+  x = 100
+  y = 200
+  print(x)
+  print(y)
+  print(z)
+
+simple_func()
+print(x)
+print(y)
+print(z)
+
+>>> 100
+>>> 200
+>>> 30
+>>> 10
+>>> 20
+>>> 30
+
+# Python looks in the local 'namescape' (think local to the current function) for variables. 
+#  If a given variable is not provided inside a function, it will continue looking one 
+#  level at a time until if finds a value.
+
+x = 10
+y = 20
+z = 30
+
+def simple_func():
+  def simple_func2():
+    x = 1000
+    print(x)
+    print(y)
+    print(z)
+ 
+  x = 100
+  y = 200
+  print(x)
+  print(y)
+  print(z)
+  simple_func2()
+  
+simple_func()
+print(x)
+print(y)
+print(z)
+
+>>> 100
+>>> 200
+>>> 30
+>>> 1000
+>>> 200
+>>> 30
+>>> 10
+>>> 20
+>>> 30
