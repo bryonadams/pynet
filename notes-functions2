@@ -1,0 +1,19 @@
+.---------------------------------------------------------.
+|  Dec 5th, 2016                                          |
+|   Functions Part 2                                      |
+|   More complication function tricks.   |
+|                                                         |
+'---------------------------------------------------------'
+
+
+# Consider namespaces and how variables are called regardng them (see notes-namespaces.txt). 
+#  a is modified when calling f1(a_list)
+>>> def f1(a_list):
+  a_list.append("whatever")
+
+>>> a = [i for i in range(10)]
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> f1(a)
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'whatever']
