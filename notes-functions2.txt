@@ -8,8 +8,9 @@
 
 # Consider namespaces and how variables are called regardng them (see notes-namespaces.txt). 
 #  a is modified when calling f1(a_list)
+
 >>> def f1(a_list):
-  a_list.append("whatever")
+...   a_list.append("whatever")
 
 >>> a = [i for i in range(10)]
 >>> a
@@ -17,3 +18,62 @@
 >>> f1(a)
 >>> a
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'whatever']
+
+
+# Regarding the other notes on functions (notes-functions1.txt), looking casually, 
+#  'a' shouldn't be modified. It's important to note how Python handles variables.
+#  We pass the variable 'a' to function 'f1' as 'a_list' and then modify 'a_list'. 
+#  Python doesn't create copy, 'a_list' is actually referencing 'a' in memory. 
+#  When we modify 'a_list', 'a' is actually being modified here.
+#  The below function instead works on 'a_list' and doesn't affect 'a'.
+>>> def f2(a_list):
+...   a_list = []
+...   a_list.append('something')
+...   print(a_list)
+... 
+>>> a = [i for i in range(10)]
+>>> f2(a)
+['something']
+>>> a
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+# Take care when passing variables to functions. A variable can be altered and cause
+#  undesired results. Additionally, some data types are immutable such as tuples and 
+#  strings.
+
+# Importing a new function
+#  Consider the function a_sum from the module temp.py
+#
+#   def a_sum(x,y,z):
+#     return x + y + z
+#   print(10)
+#  
+#  Below shows different ways to import the whole module or just import an individual 
+#  function. 
+
+>>> import temp
+10
+>>> temp
+<module 'temp' from '/home/bryon/python/pynet/temp.py'>
+>>> temp.a_sum(5,10,15)
+30
+>>> from temp import a_sum
+10
+>>> dir()
+['__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'a_sum']
+>>> a_sum(5,10,100)
+115
+
+
+
+
+
+
+
+
+
+
+
+
+
