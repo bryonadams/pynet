@@ -1,7 +1,7 @@
 .---------------------------------------------------------.
 |  Dec 5th, 2016                                          |
 |   Functions Part 2                                      |
-|   More complication function tricks.   |
+|   More complicated function tricks.                     |
 |                                                         |
 '---------------------------------------------------------'
 
@@ -64,16 +64,3 @@
 ['__builtins__', '__doc__', '__loader__', '__name__', '__package__', '__spec__', 'a_sum']
 >>> a_sum(5,10,100)
 115
-
-
-
-
-
-
-
-
-
-
-
-
-
