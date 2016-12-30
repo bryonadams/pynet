@@ -1,0 +1,113 @@
+.--------------------------.
+|  December 30, 2016     |
+|   Files                |
+'--------------------------'
+
+
+# Open files using the open() function, use quotes around the file name. 
+#  Full relative or absolute path is required.
+>>> f = open("sw1_cdp.txt")
+
+# To read a file use the .readlines() method:
+>>> f = open("sw1_cdp.txt")
+>>> a = f.readlines()
+(spits out the file, split by newlines) 
+
+# Now we are at EOF, trying to read again produces no output. To get output again,
+#  return to the beginning of the file using the .seek() method.
+>>> f.readlines()
+[]
+>>> f.seek(0)
+0
+
+# Using the .readline() method, one reads one line at a time.
+>>> f.readline()
+'SW1> show cdp neighbors detail\n'
+>>> f.readline()
+'--------------------------\n'
+>>> f.readline()
+'Device ID: R1\n'
+>>> f.readline()
+'Entry address(es):\n'
+>>> f.readline()
+'   IP address: 10.1.1.1\n'
+>>> f.readline()
+'Platform: Cisco 881, Capabilities: Router Switch IGMP\n'
+
+
+# To get the whole file as a single string, using the .read() method. Useful for parsing.
+>>> f.read()
+(spits out whole file as one string)
+
+# Printing the file to std.out
+>>> for line in f:
+...   print(line.strip("\n"))
+
+
+# Writing to files: There's a gotcha with writing to Windows files, in that Windows
+#  treats data different. For example, binary should be read or opened like so:
+>>> f = open("read_file", "rb") 
+>>> f = open("write_file", "wb")
+
+# new file, contains the following:
+#  [badams@fedoravm pynet]$ cat newfile                                                                              
+#  write something
+#  something else
+#
+#  This gotcha, we accidentally write over our file:
+>>> f = open ("newfile", "w")
+>>> f.write("test\n")
+5
+>>> f.close()
+[badams@fedoravm pynet]$ cat newfile
+test
+
+# More writing to files, .flush() method also write to the file. Files are written to at
+#  the OS level. Until the file is written to, everything is stored in the buffer.
+>>> f = open("newfile", "w")
+>>> f.write("This is a test\n")
+15
+>>> a = 'some other string\n'
+>>> f.write(a)
+18
+>>> f.flush()
+>>> f.close()
+
+# Appending to a file, when calling 'f' we can see the mode is 'a' for "append"f.
+>>> f = open("newfile", "a")
+>>> f
+<_io.TextIOWrapper name='newfile' mode='a' encoding='UTF-8'>
+>>> f.write("some other test\n")
+16
+>>> f.write("some other test\n")
+16
+>>> f.write("some other test\n")
+16
+[badams@fedoravm pynet]$ cat newfile
+This is a test
+some other string
+some other text
+some other text
+some other text
+
+#
+#Ended at about 11 mins into the video
+#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
